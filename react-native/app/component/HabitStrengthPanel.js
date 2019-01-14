@@ -6,8 +6,7 @@ import React from 'react';
 import { View, StyleSheet, Text} from 'react-native';
 import { Menu, MenuOption, MenuOptions, MenuTrigger } from 'react-native-popup-menu';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { LineChart, YAxis, Grid, XAxis } from 'react-native-svg-charts';
-import { Circle } from 'react-native-svg';
+import LineChart from './LineChart';
 
 
 const styles = StyleSheet.create({
@@ -72,22 +71,6 @@ type State = {}
 export default class HabitStrengthPanel extends React.Component<Props, State> {
 
   render() {
-    const data = [ 0, 10, 20, 30, 40, 35, 45, 55, 50, 60, 70, 80];
-    const xLabel = [ 'Dec\n2018', '31', 'Jan\n2019', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
-    const contentInset = { top: 20, bottom: 20, left: 10, right: 10 };
-    const Decorator = ({ x, y, data }) => {
-      return data.map((value, index) => (
-        <Circle
-          key={ index }
-          cx={ x(index) }
-          cy={ y(value) }
-          r={ 4 }
-          stroke={ 'rgb(134, 65, 244)' }
-          fill={ 'white' }
-        />
-      ));
-    };
-
     return (
       <View
         style={styles.container}
@@ -143,41 +126,9 @@ export default class HabitStrengthPanel extends React.Component<Props, State> {
             </MenuOptions>
           </Menu>
         </View>
-        <View style={{ height: 200, flexDirection: 'row' }}>
-          <YAxis
-            data={ data }
-            contentInset={ contentInset }
-            svg={{
-              fill: 'grey',
-              fontSize: 10,
-            }}
-            numberOfTicks={ 5 }
-            formatLabel={ value => `${value}%` }
-          />
-          <LineChart
-            style={{ flex: 1, marginLeft: 16 }}
-            data={ data }
-            svg={{ stroke: 'black' }}
-            numberOfTicks={ 5 }
-            contentInset={ contentInset }
-            yMax={100}
-            yMin={0}
-          >
-            <Grid/>
-            <Decorator />
-          </LineChart>
+        <View style={{marginTop: 15}}>
+          <LineChart/>
         </View>
-        <XAxis
-          style={{ marginHorizontal: 30 }}
-          data={ data }
-          svg={{
-            fill: 'black',
-            fontSize: 12,
-            flexWrap: 'wrap'
-          }}
-          formatLabel={ (value, index) => xLabel[index] }
-          contentInset={{ left: 10, right: 10 }}
-        />
       </View>
     );
   }

@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   },
   detailRow: {
     flexDirection: 'row',
+    justifyContent: 'space-around',
     paddingTop: 15,
     paddingBottom: 5,
     paddingLeft: 35
