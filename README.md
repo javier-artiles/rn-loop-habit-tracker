@@ -4,6 +4,13 @@ This is a React Native port of the original [Loop Habit Tracker for Android](htt
 
 The main intent of this project is to provide the same habit tracking experience on iOS devices.
 
+### Screenshots
+
+<p float="left">
+  <img alt="Habit list" src="screenshots/ios/iPhone%20XR%20-%20Habit%20list%20scene.png" width="200" />
+  <img alt="Habit detail" src="screenshots/ios/iPhone%20XR%20-%20Habit%20detail%20scene.png" width="200" /> 
+</p>
+
 ### TODO
 
 - [ ] Mock detail scene.
