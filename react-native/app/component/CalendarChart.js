@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { View, StyleSheet, Text, Dimensions} from 'react-native';
+import VerticalDayLabelPanel from './VerticalDayLabelPanel';
 
 const _ = require('lodash');
 const moment = require('moment');
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
   },
   dayGridPanel: {
     flexDirection: 'column',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginRight: 5
   },
   rowLayoutPanel: {
     flexDirection: 'row'
@@ -30,14 +32,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingLeft: 3,
     paddingBottom: 2
-  },
-  dayNameLabelPanel: {
-    justifyContent: 'center',
-    marginLeft: 5
-  },
-  dayNameLabelText: {
-    fontSize: 14,
-    color: 'gray',
   },
   dayCellPanel: {
     alignItems: 'center',
@@ -125,35 +119,6 @@ export default class CalendarChart extends React.Component<Props, State> {
     );
   }
 
-  renderDayLabels(dayCellSize: number, dayCellMargin: number) {
-    return [
-      'Sun',
-      'Mon',
-      'Tue',
-      'Wed',
-      'Thu',
-      'Fri',
-      'Sat'
-    ].map(day => {
-      const dynamicStyle = {
-        height: dayCellSize,
-        margin: dayCellMargin
-      };
-      return (
-        <View
-          key={day}
-          style={[styles.dayNameLabelPanel, dynamicStyle]}
-        >
-          <Text
-            style={styles.dayNameLabelText}
-          >
-            {day}
-          </Text>
-        </View>
-      );
-    });
-  }
-
   renderMonthLabels(dateList: moment[], dayCellSize: number, dayCellMargin: number) {
     const headerDays = dateList.filter((value, index) => index % 7 === 0).reverse();
     const labelComponents = [];
@@ -184,12 +149,12 @@ export default class CalendarChart extends React.Component<Props, State> {
 
   // This ensures that the view will be re-rendered on changes of orientation,
   // but forces one unnecessarily update upon the first rendering
-  onLayout(e) {
+  onLayout() {
     this.forceUpdate();
   }
 
   render() {
-    // TODO move some of this magic numbers to props and defaults
+    // TODO move some of these magic numbers to props and defaults
     const dayCellSize = 23;
     const dayCellMargin = 1;
     const numRows = 7;
@@ -217,9 +182,10 @@ export default class CalendarChart extends React.Component<Props, State> {
           >
             {this.renderDayGrid(dateList, dayCellSize, dayCellMargin)}
           </View>
-          <View>
-            {this.renderDayLabels(dayCellSize, dayCellMargin)}
-          </View>
+          <VerticalDayLabelPanel
+            cellHeight={dayCellSize}
+            cellMargin={dayCellMargin}
+          />
         </View>
       </View>
     );

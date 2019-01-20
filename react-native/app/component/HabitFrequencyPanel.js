@@ -4,6 +4,7 @@
 
 import React from 'react';
 import { View, StyleSheet, Text} from 'react-native';
+import FrequencyChart from './FrequencyChart';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,6 +12,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     marginLeft: 4,
     marginRight: 4,
+    marginBottom: 10,
     backgroundColor: 'white'
   },
   header: {
@@ -42,6 +44,7 @@ export default class HabitFrequencyPanel extends React.Component<Props, State> {
             Frequency
           </Text>
         </View>
+        <FrequencyChart/>
       </View>
     );
   }
