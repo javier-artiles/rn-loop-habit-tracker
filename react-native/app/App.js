@@ -8,6 +8,7 @@ import HabitListScene from './scene/HabitListScene';
 import { MenuProvider } from 'react-native-popup-menu';
 import NewHabitLightbox from './component/NewHabitLightbox';
 import HabitDetailScene from './scene/HabitDetailScene';
+import SettingsScene from './scene/SettingsScene';
 
 export default App = () => (
   <MenuProvider>
@@ -29,6 +30,10 @@ export default App = () => (
         <Scene
           key="habitDetail"
           component={HabitDetailScene}
+        />
+        <Scene
+          key="settings"
+          component={SettingsScene}
         />
       </Scene>
     </Router>

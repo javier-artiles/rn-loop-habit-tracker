@@ -200,7 +200,7 @@ export default class HabitListNavBar extends React.Component<Props, State> {
                 />
               </MenuOption>
               <MenuOption
-                onSelect={() => alert('Settings')}
+                onSelect={() => Actions.settings()}
               >
                 <Text style={menuOptionsStyles.optionText}>Settings</Text>
               </MenuOption>
